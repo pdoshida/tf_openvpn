@@ -1,5 +1,11 @@
 # openvpnの作り方
 
+## 前提
+```
+bucketname=pushd304-openvpn
+aws s3 mb s3://${bucketname} --profile asc
+```
+
 
 ```
 # xxxxxxxxxxxxxxxxxxxx部分は可変

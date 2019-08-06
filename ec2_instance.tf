@@ -20,7 +20,7 @@ resource "aws_instance" "open_vpn" {
 }
 
 # ElasticIP
-resource "aws_eip" "eip_ec2_default" {
+resource "aws_eip" "open_vpn" {
   instance = "${aws_instance.open_vpn.id}"
   vpc      = true
 

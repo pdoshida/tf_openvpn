@@ -1,9 +1,10 @@
 resource "aws_instance" "open_vpn" {
-  ami                         = "ami-07b670641b5af28f5" # open-vpn
+  ami = "ami-07b670641b5af28f5" # open-vpn
   #availability_zone           = "ap-northeast-1a"
   ebs_optimized               = false
   instance_type               = "t2.micro"
   monitoring                  = false
+  iam_instance_profile        = "AmazonEC2RoleforSSM"
   key_name                    = "Myhome"
   subnet_id                   = "${module.vpc.public_subnets[0]}"
   vpc_security_group_ids      = [aws_security_group.openvpn_access_server.id]
@@ -15,6 +16,10 @@ resource "aws_instance" "open_vpn" {
     volume_type           = "gp2"
     volume_size           = 8
     delete_on_termination = true
+  }
+
+  tags = {
+    Name = "open vpn"
   }
 
 }
